@@ -46,8 +46,8 @@ lambda_grid = seq(0, 10^10, length = 100)
 
 ridge_model = glmnet(training_x,
                      training_y,
-                     alpha = 0,
-                     lambda = lambda_grid)
+                     alpha = 0)
+              
 
-
+plot(ridge_model, xvar =  "lambda")
 
