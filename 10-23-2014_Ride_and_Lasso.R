@@ -23,7 +23,7 @@ x = x[,-1] #get rid of the intercept column (1st column)
 # and it deletes observation with missing values
 # this transform categorical vars into dummy variables (lasso / riddge can't take categorical values)
 
-y = Hitters$Salary
+y = na.omit(Hitters$Salary) #remove na from matrix
 
 # split the dataset into training and testing 
 set.seed(1)
@@ -40,7 +40,14 @@ testing_y = y[test]
 
 # define lambda
 
+lambda_grid = seq(0, 10^10, length = 100)
 
+#ridge regression
+
+ridge_model = glmnet(training_x,
+                     training_y,
+                     alpha = 0,
+                     lambda = lambda_grid)
 
 
 
