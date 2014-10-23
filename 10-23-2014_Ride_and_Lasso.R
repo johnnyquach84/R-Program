@@ -26,10 +26,19 @@ x = x[,-1] #get rid of the intercept column (1st column)
 y = Hitters$Salary
 
 # split the dataset into training and testing 
+set.seed(1)
+
+train = sample(1:nrow(x), nrow(x)/2)
+test = -train
+
+training_x = x[train,]
+testing_x = x[test,]
+
+training_y = y[train] #no need for , since its already a vector - no two dimensions
+testing_y = y[test]
 
 
-
-
+# define lambda
 
 
 
