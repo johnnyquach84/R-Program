@@ -55,3 +55,50 @@ head(read.csv(files_full[3]))
 andy_david <- rbind(andy, read.csv(files_full[2]))
 
 andy_david
+
+day_25 <- andy_david[which(andy_david$Day == 25),]
+
+day_25
+
+for (i in 1:5) {print(i)}
+
+for (i in 1:5) {
+  dat <- rbind(dat, read.csv(files_full[i]))
+}
+
+# can't rbind something into a file that doesn't exist yet. 
+# combined all five files into 1 w/ this loop
+dat <- data.frame()
+for (i in 1:5) {
+  dat <- rbind(dat, read.csv(files_full[i]))
+}
+
+str(dat)
+?str
+
+median(dat$Weight)
+# will give NA because row 77 is missing data 
+
+median(dat$Weight, na.rm=TRUE) #strips NA
+
+dat_30 <- dat[which(dat[,"Day"] == 30),]
+dat_30
+
+median(dat_30$Weight)
+
+weightmedian <- function(directory, day) {# content of the function}
+  
+weightmedian <- function(directory, day) {
+  files_list <- list.files(directory, full.names = TRUE) #creates a list of files
+  dat <- data.frame()                                    #creates an empty data frame
+  for (i in 1:5) {                                       #Loops through the files, rbinding them together  
+      dat <- rbind(dat, read.csv(files_list[i]))
+  }
+  dat_subset <- dat[which(dat[,"Day"] == day),]          #subsets the rows that match the day  
+  median(dat_subset[, "Weight"], na.rm=TRUE) #identifies the median weight While stripping NA
+}
+  
+weightmedian(directory = "diet_data", day = 20)
+
+weightmedian("diet_data", 4)
+  
