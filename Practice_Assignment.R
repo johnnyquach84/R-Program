@@ -101,4 +101,4 @@ weightmedian <- function(directory, day) {
 weightmedian(directory = "diet_data", day = 20)
 
 weightmedian("diet_data", 4)
-  
+
