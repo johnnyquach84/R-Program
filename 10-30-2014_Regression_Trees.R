@@ -57,5 +57,3 @@ mean((predicted_y - testing_medv)^2)
     #Random Samples of selection of subset
     #Trees can be a bit different because random samples will produce
     #different variables that can be the highest significant variable
-  
-
